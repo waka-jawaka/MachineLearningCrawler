@@ -1,0 +1,17 @@
+<div class="container-fluid mb-4">
+  {% if object_list %}
+    <div class="list-group">
+      {% for article in object_list %}
+          <a href="#" onclick="window.open('{{ article.link }}')"
+             class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ article.title }}</h5>
+            </div>
+              <p class="mb-1">{{ article.timestamp }}</p>
+          </a>
+      {% endfor %}
+    </div>
+  {% else %}
+      <p class="mb-0">No articles found for '{{ period }}'</p>
+  {% endif %}
+</div>

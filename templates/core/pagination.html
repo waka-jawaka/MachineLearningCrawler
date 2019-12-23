@@ -1,0 +1,49 @@
+<div class="container-fluid mb-4">
+  <ul class="pagination">
+
+    {% if has_previous_pages %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'page' current_site.slug period previous_page_to_scroll %}">
+            &laquo;
+        </a>
+      </li>
+    {% else %}
+       <li class="page-item disabled">
+        <a class="page-link" href="#">
+            &laquo;
+        </a>
+      </li>
+    {% endif %}
+
+    {% for page_index in pages %}
+        {% if page_index == current_page %}
+            <li class="page-item active">
+                <a class="page-link" href="{% url 'page' current_site.slug period page_index %}">
+                    {{ page_index }}
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'page' current_site.slug period page_index %}">
+                    {{ page_index }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    {% if has_next_pages %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'page' current_site.slug period next_page_to_scroll %}">
+            &raquo;
+        </a>
+      </li>
+    {% else %}
+       <li class="page-item disabled">
+        <a class="page-link" href="#">
+            &raquo;
+        </a>
+      </li>
+    {% endif %}
+
+  </ul>
+</div>
